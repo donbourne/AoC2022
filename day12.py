@@ -46,33 +46,33 @@ cells_previous_number_cols.append(end_cell[1])
 
 def get_next_cells(row, col, cells_next_number_rows, cells_next_number_cols):
     min_ordinal = all_cells_ordinal[row,col] - 1
-    filled_some_cells = False
+    found = False
 
     if row > 0:
         if all_cells_best_number[row-1, col] == -1:
             if all_cells_ordinal[row-1, col] >= min_ordinal:
                 cells_next_number_rows.append(row-1)
                 cells_next_number_cols.append(col)
-                filled_some_cells = True
+                found = True
     if col > 0:
         if all_cells_best_number[row, col-1] == -1:
             if all_cells_ordinal[row, col-1] >= min_ordinal:
                 cells_next_number_rows.append(row)
                 cells_next_number_cols.append(col-1)
-                filled_some_cells = True
+                found = True
     if row+1 < rows:
         if all_cells_best_number[row+1, col] == -1:
             if all_cells_ordinal[row+1, col] >= min_ordinal:
                 cells_next_number_rows.append(row+1)
                 cells_next_number_cols.append(col)
-                filled_some_cells = True
+                found = True
     if col+1 < cols:
         if all_cells_best_number[row, col+1] == -1:
             if all_cells_ordinal[row, col+1] >= min_ordinal:
                 cells_next_number_rows.append(row)
                 cells_next_number_cols.append(col+1)
-                filled_some_cells = True
-    return filled_some_cells
+                found = True
+    return found
 
 
 current_number = 0
